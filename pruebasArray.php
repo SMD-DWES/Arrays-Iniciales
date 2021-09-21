@@ -47,8 +47,8 @@
             echo "<br><br>Visualizar el nombre de un mes concreto.<br>";
             echo 'El mes número 4 es: '. $mes[4];
 
-            //Mejora con tablas
-            echo "<br><br>Mejora con tablas: <br>";
+            //Mejora con tablas v2
+            echo "<br><br>Mejora con tablas 2: <br>";
             echo "<table border='2' cellspacing='0'>";
             echo "<tr>";
             foreach($mes as $index => $valores){
@@ -61,23 +61,6 @@
             }
             echo '</tr>';
             echo '</table>';
-
-            //Mejora con tablas 2
-            echo "<br><br>Mejora con tablas 2: <br>";
-            echo "<table border='2' cellspacing='0'>";
-            echo "<tr>";
-            foreach($mes as $index => $valores){
-                echo '<th class="filEspacio">'.$valores.'</th>';
-            }
-            echo '</tr>';
-            echo '<tr>';
-            foreach($mes as $index => $valores){
-                echo '<td>' . $index . '</td>';
-            }
-            echo '</tr>';
-            echo '</table>';
-
-
         ?>
     </body>
 </html>
