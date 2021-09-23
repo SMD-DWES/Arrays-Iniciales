@@ -6,24 +6,48 @@
     </head>
     <body>
         <?php
+        
+
             //Me devuelve el numero de dias que tiene un mes a partir del mes pasado.
-            function decirDias($numMes) {
-                $mesDias = array(
+            function decirDias() {
+                /*$mesDias = array(
                     31,
                     28,
-                    31,
-                    30,
-                    31,
-                    30,
-                    31,
+                    31,//3
+                    30,//4
+                    31,//5
+                    30,//6
+                    31,//7
                     31,//8
                     30,
                     31,
                     30,
                     31
-                );
+                );*/
 
-                return $mesDias[$numMes];
+                /*$anio = date("L");
+
+                if(anio % 4 == 0 && anio % 100 != 0 || (anio % 100 == 0 && anio % 400 == 0)) {
+
+                }*/
+
+                $meses['Enero'] = 31;
+                $meses['Febrero'][0] = 28;
+                $meses['Febrero'][1] = 29;
+                $meses['Marzo'] = 31;
+                $meses['Abril'] = 30;
+                $meses['Mayo'] = 31;
+                $meses['Junio'] = 30;
+                $meses['Julio'] = 31;
+                $meses['Agosto'] = 31;
+                $meses['Septiembre'] = 30;
+                $meses['Octubre'] = 31;
+                $meses['Noviembre'] = 30;
+                $meses['Diciembre'] = 31;
+
+               
+
+                return $meses;
             }
 
             //Devuelve el nombre del mes a partir del número del mes.
@@ -57,14 +81,19 @@
             echo '</tr>';
             echo '<tr>';
 
-            for($i=0;$i<=11;$i++){
-                echo '<td>' . decirDias($i) . '</td>';
+            foreach(decirDias() as $indice) {
+                if($indice["Febrero"][0] == 28) 
+                    echo '<td>' . 28 . '</td>';
+                else if($indice["Febrero"][1] == 29)
+                    echo '<td>' . 29 . '</td>';
+                
+                echo '<td>' . $indice . '</td>';
             }
             echo '</tr>';
             echo '</table>';
             echo "<h2>Año actual: ". date("Y")."</h2>";
             echo 'Día actual: '. date("D M Y");
-            echo 'El mes numero 2 es el mes: '. devolverMes(2);
+            echo '<br>El mes numero 2 es el mes: '. devolverMes(2);
 
         ?>
     </body>
