@@ -82,12 +82,12 @@
             echo '<tr>';
 
             foreach(decirDias() as $indice) {
-                if($indice["Febrero"][0] == 28) 
+                if(isSet($indice["Febrero"][0]) == 28) 
                     echo '<td>' . 28 . '</td>';
-                else if($indice["Febrero"][1] == 29)
+                else if(isSet($indice["Febrero"][1]) == 29)
                     echo '<td>' . 29 . '</td>';
-                
-                echo '<td>' . $indice . '</td>';
+                else
+                    echo '<td>' . $indice . '</td>';
             }
             echo '</tr>';
             echo '</table>';
