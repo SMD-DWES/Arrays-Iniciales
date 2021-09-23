@@ -6,9 +6,7 @@
     </head>
     <body>
         <?php
-        
-
-            //Me devuelve el numero de dias que tiene un mes a partir del mes pasado.
+            //Me devuelve el numero de dias que tiene un mes.
             function decirDias() {
                 /*$mesDias = array(
                     31,
@@ -25,12 +23,6 @@
                     31
                 );*/
 
-                /*$anio = date("L");
-
-                if(anio % 4 == 0 && anio % 100 != 0 || (anio % 100 == 0 && anio % 400 == 0)) {
-
-                }*/
-
                 $meses['Enero'] = 31;
                 $meses['Febrero'][0] = 28;
                 $meses['Febrero'][1] = 29;
@@ -44,10 +36,21 @@
                 $meses['Octubre'] = 31;
                 $meses['Noviembre'] = 30;
                 $meses['Diciembre'] = 31;
-
-               
-
+                    
                 return $meses;
+            }
+
+            //Función esBisiesto, a partir de un año te dice si es o no es bisiesto, si no se le pasa ninguno, coge la fecha actual
+            function esBisiesto($anio=null) {
+
+                //Ternaria, si la llamada a función no tiene param, la fecha la coge automaticamente del sistema
+                //si tiene parametros pone la pasada.
+                ($anio == null) ? $anio = date("Y") : $anio;
+
+                //Si el año es bisiesto, febrero tiene 29 días, si no lo es, tiene 28.
+                if($anio % 4 == 0 && $anio %100 != 0 || ($anio %100 == 0 && $anio % 400 == 0)) 
+                    return true; 
+                return false;
             }
 
             //Devuelve el nombre del mes a partir del número del mes.
@@ -72,22 +75,31 @@
             }
 
             //Mejora con tablas 2
+            echo("<h1>Año 2021</h1>");
             echo "<table class='test'>";
             echo "<tr>";
 
+            //Ahora esto ya se podría cambiar y usar la función decirDias(), pero bueno, de momento ta bien
             for($i=1;$i<=12;$i++){
                 echo '<th class="filEspacio">'.devolverMes($i).'</th>';
             }
             echo '</tr>';
             echo '<tr>';
 
-            foreach(decirDias() as $indice) {
-                if(isSet($indice["Febrero"][0]) == 28) 
-                    echo '<td>' . 28 . '</td>';
-                else if(isSet($indice["Febrero"][1]) == 29)
-                    echo '<td>' . 29 . '</td>';
-                else
-                    echo '<td>' . $indice . '</td>';
+            foreach(decirDias() as $mes => $dia) {
+
+                if($mes=="Febrero" && esBisiesto()){
+                    echo '<td>28</td>';
+                } else if($mes=="Febrero" && !esBisiesto())
+                    echo '<td>29</td>';
+
+                /*if($mes == "Febrero" && $dia[0] == 28)
+                    echo '<td>28</td>';
+                else if($mes == "Febrero" && $dia[1] == 29)
+                    echo '<td>29</td>';*/
+               // else
+                if($mes != "Febrero")
+                    echo('<td>'.$dia.'</td>');
             }
             echo '</tr>';
             echo '</table>';
