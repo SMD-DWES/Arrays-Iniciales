@@ -6,6 +6,7 @@
     </head>
     <body>
         <?php
+
             //Me devuelve el numero de dias que tiene un mes.
             function decirDias() {
                 /*$mesDias = array(
@@ -47,10 +48,12 @@
                 //si tiene parametros pone la pasada.
                 ($anio == null) ? $anio = date("Y") : $anio;
 
+                echo '<script>console.log('.$anio.')</script>'; //DEBUG
+
                 //Si el año es bisiesto, febrero tiene 29 días, si no lo es, tiene 28.
                 if($anio % 4 == 0 && $anio %100 != 0 || ($anio %100 == 0 && $anio % 400 == 0)) 
-                    return true; 
-                return false;
+                    return false;
+                return true;
             }
 
             //Devuelve el nombre del mes a partir del número del mes.
@@ -74,33 +77,41 @@
                 return $mes[$numMes];
             }
 
-            //Mejora con tablas 2
-            echo("<h1>Año 2021</h1>");
-            echo "<table class='test'>";
-            echo "<tr>";
-
-            //Ahora esto ya se podría cambiar y usar la función decirDias(), pero bueno, de momento ta bien
-            for($i=1;$i<=12;$i++){
-                echo '<th class="filEspacio">'.devolverMes($i).'</th>';
+            //Crea una tabla con todos los días del año especificado.
+            function tablasBisiesto($anio) {
+                for($i=2021;$i<=$anio;$i++) {
+                    echo "<table>";
+                    echo '<caption> Año: '. $i.'</caption>';
+                    echo "<tr>";
+        
+                    //Ahora esto ya se podría cambiar y usar la función decirDias(), pero bueno, de momento ta bien
+                    foreach(decirDias() as $mes => $dia) {
+                        echo '<th class="filEspacio">'.$mes.'</th>';
+                    }
+                    echo '</tr>';
+                    echo '<tr>';
+        
+                    foreach(decirDias() as $mes => $dia) {
+        
+                        if($mes=="Febrero" && esBisiesto($i)){
+                            echo '<td>28</td>';
+                        } else if($mes=="Febrero" && !esBisiesto($i))
+                            echo '<td>29</td>';
+                        /*if($mes == "Febrero" && $dia[0] == 28)
+                            echo '<td>28</td>';
+                        else if($mes == "Febrero" && $dia[1] == 29)
+                            echo '<td>29</td>';*/
+                    // else
+                        if($mes != "Febrero")
+                            echo('<td>'.$dia.'</td>');
+                    }
+                }
             }
-            echo '</tr>';
-            echo '<tr>';
+            
 
-            foreach(decirDias() as $mes => $dia) {
-
-                if($mes=="Febrero" && esBisiesto()){
-                    echo '<td>28</td>';
-                } else if($mes=="Febrero" && !esBisiesto())
-                    echo '<td>29</td>';
-
-                /*if($mes == "Febrero" && $dia[0] == 28)
-                    echo '<td>28</td>';
-                else if($mes == "Febrero" && $dia[1] == 29)
-                    echo '<td>29</td>';*/
-               // else
-                if($mes != "Febrero")
-                    echo('<td>'.$dia.'</td>');
-            }
+            //Con un formulario, se podría poner hasta que año quieres mostrar
+            tablasBisiesto(2024);
+            
             echo '</tr>';
             echo '</table>';
             echo "<h2>Año actual: ". date("Y")."</h2>";
