@@ -21,7 +21,7 @@
             <a href="index.html">Inicio</a>
             <a href="#">Contacto</a>
         </div>
-        <form action="formularioDatos.php" method="GET">
+        <form action="formularioDatos.php" method="POST">
             <!-- Campos de nombre y email. -->
             <label>Nombre:</label>
             <input name="nombre" type="text">
@@ -29,9 +29,9 @@
             <input name="email" id="email" type="email">
             <label>¿Quieres aportar datos a la web?:</label>
             <!-- Empieza los radioButtons -->
-            <input type="radio" name="aportarDatos" value="Sí">
+            <input type="radio" name="aportarDatos">
             <label>Sí</label>
-            <input type="radio" name="aportarDatos" value="No">
+            <input type="radio" name="aportarDatos">
             <label>No</label>
             <!-- Aquí hace salto a la línea siguiente -->
             <label id="goBlock">Aportacion de datos:</label>
