@@ -1,0 +1,81 @@
+/* Sergio Matamoros Delgado */
+
+body{
+    background-color: #222;
+    color: white;
+    background: URL("imgs/background.jpg");
+
+    /* Establezco una serie de fuentes disponibles para el navegador,
+    en caso de que una falle pasará a la siguiente */ 
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif; 
+}
+
+/**
+==================
+    FORMULARIO
+==================
+*/
+
+form {
+    width: 20%;
+    border: 2px solid black;
+    padding: 50px;   
+    margin: auto; /* Centra */
+    /* Establezco el color del fondo del formulario con RGB. (También se 
+    podría haber puesto con hexadecimal) */ 
+    background-color:rgb(131, 130, 130);
+}
+
+#email{
+    margin-left: 4.5%;
+}
+
+input[type="text"],[type="email"]{
+    margin-right: 25%;
+}
+
+label {
+    font-weight: bold;
+    margin-top: 1%;
+}
+select,#encontrao{
+    display:block;
+}
+input{
+    display: inline-block; /* Misma línea y permitiria modificiar el width y el height */
+    margin-left: 2%;
+    margin-bottom: 2%;
+    border:1px solid #413a3a;
+    border-radius: 3px;
+
+}
+textarea{
+    display: block; /* Lo muestra en bloque, por lo que irá a la otra linea */
+    width: 92%;
+    height: 9%;
+}
+
+/**
+    - Muevo el texto de aportación a la línea siguiente
+*/
+#goBlock {
+    display: block;
+}
+
+/**
+    - Botón de enviar del formulario
+*/
+.send{
+    width: 100%;
+    color: white;
+    margin: 20px auto;
+    padding: 10px;
+    background-color: #222;
+}
+/*
+    - Pseudoclase para cambiar el color al poner el ratón encima del botón.
+*/
+.send:hover{
+    cursor: pointer; /* Establezco que el cursor cambie a un puntero al estar dentro del botón. */
+    background-color: #5e5a5a;
+}

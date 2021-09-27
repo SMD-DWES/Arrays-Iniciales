@@ -1,0 +1,43 @@
+/* Sergio Matamoros Delgado */
+
+.header{
+    background-color: #2d2d2d;
+    margin-bottom: 5%;
+    text-align: center;
+    padding-bottom: 5px;
+}
+
+/**
+    - Aquí uso una pseudoclase para definir el color de todos los links de la página
+    web a blanco.
+*/
+a:link, a:visited{
+    margin-right: 2%;
+    font-weight: bold;
+    color: white;
+}
+
+/**
+    - Aquí se utiliza una pseudoclase para que al poner el ratón encima cambie
+        el color
+*/
+a:hover {
+    color:orange;
+}
+
+/*
+===============
+    FOOTER
+    (Solo para la página principal)
+===============
+*/
+footer { 
+    padding: 5px;
+    background-color: #2d2d2d;
+}
+/*
+    - Establezco el texto de copyright a la derecha del todo del footer
+*/
+#copy {
+    float: right;
+}
